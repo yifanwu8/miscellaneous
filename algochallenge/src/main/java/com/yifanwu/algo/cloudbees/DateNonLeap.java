@@ -44,6 +44,7 @@ public class DateNonLeap implements DateInterface, Comparable<DateNonLeap>, Seri
         this.day = day;
     }
 
+    @Override
     public DateInterface addDays(int days) {
         long daysToMin = daysToMinDate();
         daysToMin += days;
