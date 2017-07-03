@@ -68,4 +68,14 @@ public class TestDate {
                 ));
 
     }
+
+    @Test
+    public void compareTest() {
+        Assert.assertTrue(new DateNonLeap(2000, 1, 1)
+                .compareTo(new DateNonLeap(2000, 1,2)) < 0);
+        Assert.assertTrue(new DateNonLeap(2000, 1, 1)
+                .compareTo(new DateNonLeap(2000, 1,1)) == 0);
+        Assert.assertTrue(new DateNonLeap(2000, 1, 1)
+                .compareTo(new DateNonLeap(1999, 12,31)) > 0);
+    }
 }

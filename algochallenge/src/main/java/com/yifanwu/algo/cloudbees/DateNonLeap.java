@@ -10,6 +10,7 @@ import java.util.Objects;
  */
 public class DateNonLeap implements DateInterface, Comparable<DateNonLeap>, Serializable {
 
+    private static final long serialVersionUID = 8329763542007256036L;
     /**
      * min year supported
      */
