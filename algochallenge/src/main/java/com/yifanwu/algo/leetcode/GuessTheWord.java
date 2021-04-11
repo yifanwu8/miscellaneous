@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Queue;
+import java.util.Random;
 
 /**
  * @author Yifan.Wu on 4/4/2021
@@ -12,19 +13,23 @@ import java.util.Queue;
 public class GuessTheWord {
 
     public void findSecretWord(String[] wordlist, Master master) {
-        Queue<String> currentWords = new ArrayDeque<>(Arrays.asList(wordlist));
-        Queue<String> leftWords = new ArrayDeque<>();
+        List<String> currentWords = new ArrayList<>(Arrays.asList(wordlist));
+        List<String> leftWords = new ArrayList<>();
 
+        Random random = new Random();
         while (!currentWords.isEmpty()) {
-            String guessedWord = currentWords.poll();
+            int nextInd = random.nextInt(currentWords.size());
+            String guessedWord = currentWords.get(nextInd);
             int score = master.guess(guessedWord);
             if (score == 6) return;
-            while (!currentWords.isEmpty()) {
-                String testWord = currentWords.poll();
+            for (int i = 0; i < currentWords.size(); i++) {
+                if (i == nextInd) continue;
+                String testWord = currentWords.get(i);
                 int matchedChar = matchedChar(guessedWord, testWord);
                 if (matchedChar == score) leftWords.add(testWord);
             }
             currentWords = leftWords;
+            leftWords = new ArrayList<>();
         }
     }
 

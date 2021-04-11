@@ -40,6 +40,7 @@ public class PathWithMinimumEffort {
                         Math.abs(heights[currentShortesCell.row][currentShortesCell.col] - heights[curRow][curCol]));
                 if (distance < distances[curRow][curCol]) {
                     distances[curRow][curCol] = distance;
+                    // simulate index PQ by removing first and re-add with new distance
                     pq.remove(new DistanceOfCell(curRow, curCol, 0));
                     pq.add(new DistanceOfCell(curRow, curCol, distance));
                 }
