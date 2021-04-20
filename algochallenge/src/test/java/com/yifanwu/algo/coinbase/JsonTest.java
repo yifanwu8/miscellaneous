@@ -55,5 +55,6 @@ public class JsonTest {
         ObjectMapper mapper = new ObjectMapper();
 
         Map<String, Object> map = mapper.readValue(json, Map.class);
+        System.out.println(map);
     }
 }
